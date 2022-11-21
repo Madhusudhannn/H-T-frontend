@@ -1,0 +1,39 @@
+
+<head>
+
+    
+
+    <link rel="stylesheet" href="questions.component.css" type="text/css">
+  
+  </head>
+  <body>
+    <div class="container">
+        
+      <form>
+        <h3>GetquestionbyId</h3>
+        <label>questionId</label>
+        <input type="text"[(ngModel)]="questions.questionId" name="questionId"><br>
+        <button class= "btn btn-primary" type="button" (click)="getquestionbyId()" > Get</button>
+</form>
+</div>
+</body>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>question</th>
+            <th>description</th>
+            <th>dob</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{question.question}}</td>
+            <td>{{question.description}}</td>
+            <td>{{question.dob}}</td>
+            
+
+        </tr>
+    </tbody>
+</table>
+

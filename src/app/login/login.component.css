@@ -1,0 +1,48 @@
+/* label {
+
+    width: 100px;
+
+    display: inline-block;
+
+    margin: 0.2cm;
+
+    font: size 6px;
+
+    font-weight: bold
+
+} */form{
+    width: 500px;
+    display: inline-block;
+    
+}
+.container {
+
+    width: 400px;
+
+    height: auto;
+ 
+
+}
+body {
+    text-align: center;
+}
+label {
+
+    width: 100px;
+
+    display: inline-block;
+
+    margin: 0.1cm;
+    text-align: left;
+
+    font: size 6px;
+
+    font-weight: bold
+
+}
+label.form-label{
+    text-align: left;
+}
+
+
+

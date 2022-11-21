@@ -1,0 +1,27 @@
+<head>
+    <link rel="stylesheet" href="getallquestions.component.css" type="text/css">
+  
+  </head>
+  <button class= "btn btn-primary" type="button" (click)="getallquestions()" > Get</button>
+  <table class="table table-striped">
+    <thead>
+        <tr>
+            <th>questionId</th>
+            <th>question</th>
+            <th>description</th>
+            
+            <th>dob</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let rquestion of rquestions">
+            <td>{{rquestion.questionId}}</td>
+            <td>{{rquestion.question}}</td>
+            <td>{{rquestion.description}}</td>
+            <td>{{rquestion.dob}}</td>
+            
+
+        </tr>
+    </tbody>
+</table>
+

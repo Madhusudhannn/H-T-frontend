@@ -1,0 +1,70 @@
+<head>
+
+    <link rel="stylesheet" href="savequestions.component.css" type="text/css">
+  
+  </head>
+  
+<body>
+  <form [formGroup]="save" (ngSubmit)="savequestions()" class="border p-3 rounded-3">
+  
+  <div class="container">
+      <div class="row g-0">
+        <div class="row">
+    <div class="col text-centre p-8 mb-4 bg-light">
+      
+      <span class="fs-4">Savequestions</span>
+    </div>
+    </div>
+  </div>
+
+    <div class="col mb-3">
+      <label for="question" class="form-label">Question</label>
+            <input type="text" class="form-control" placeholder="question" id="question" formControlName="question">
+            <div class="form-text text-danger"
+            *ngIf="question.errors?.['required'] &&(question.touched||question.dirty)">
+            *required
+          </div>
+          <div class="form-text form-danger" *ngIf="question.errors?.['pattern']&&(question.touched ||question.dirty)">
+            *question required
+          </div>
+    
+      <div class="col mb-3">
+        <label for="description" class="form-label">Description</label>
+              <input type="text" class="form-control" id="description" formControlName="description">
+              <div class="form-text text-danger"
+              *ngIf="description.errors?.['required'] &&(description.touched||description.dirty)">
+              *required
+            </div>
+            <div class="form-text form-danger" *ngIf="description.errors?.['pattern']&&(description.touched ||description.dirty)">
+              *description required
+            </div>
+      </div>
+      <div class="col mb-3">
+        <label for="userId" class="form-label">User Id</label>
+              <input type="text" class="form-control" id="userId" formControlName="userId">
+              <div class="form-text text-danger"
+              *ngIf="userId.errors?.['required'] &&(userId.touched||userId.dirty)">
+              *required
+            </div>
+            <div class="form-text form-danger" *ngIf="userId.errors?.['pattern']&&(userId.touched ||userId.dirty)">
+              *userId required
+            </div>
+      </div>
+      <div class="col mb-3">
+        <label for="dob" class="form-label">Date</label>
+              <input type="datetime-local" class="form-control" id="dob" formControlName="dob">
+      </div>
+      
+      
+    </div>
+    <div class ="row">
+      <div class="col-6 offset-3">
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary">Savequestion</button>
+        </div>
+      </div>
+    </div>
+    </div>
+ 
+</form>
+</body>

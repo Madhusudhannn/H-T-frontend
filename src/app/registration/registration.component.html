@@ -1,0 +1,88 @@
+
+<body>
+  <form [formGroup]="registred" (ngSubmit)="userregister()" class="border p-3 rounded-3">
+  
+  <div class="container">
+      <div class="row g-0">
+        <div class="row">
+    <div class="col text-centre p-8 mb-4 bg-light">
+      
+      <span class="fs-4">Registration</span>
+    </div>
+    </div>
+  </div>
+
+    <div class="col mb-3">
+      <label for="firstName" class="form-label">FirstName</label>
+            <input type="text" class="form-control" placeholder="firstName" id="firstName" formControlName="firstName">
+          <div class="form-text text-danger"
+            *ngIf="firstName.errors?.['required'] &&(firstName.touched||firstName.dirty)">
+            *required
+          </div>
+          <div class="form-text form-danger" *ngIf="firstName.errors?.['pattern']&&(firstName.touched ||firstName.dirty)">
+            *firstName should be Alphbet
+          </div>
+
+
+    
+      <div class="col mb-3">
+        <label for="lastName" class="form-label">LastName</label>
+              <input type="text" class="form-control" id="lastName" formControlName="lastName">
+              <div class="form-text text-danger"
+            *ngIf="lastName.errors?.['required'] &&(lastName.touched||lastName.dirty)">
+            *required
+          </div>
+          <div class="form-text form-danger" *ngIf="lastName.errors?.['pattern']&&(lastName.touched ||lastName.dirty)">
+            *lastName should be Alphbet
+          </div>
+      </div>
+      <div class="col mb-3">
+        <label for="emailID" class="form-label">emailID</label>
+              <input type="text" class="form-control" id="emailID" formControlName="emailID">
+              <div class="form-text text-danger"
+            *ngIf="emailID.errors?.['required'] &&(emailID.touched||emailID.dirty)">
+            *required
+          </div>
+          <div class="form-text text-danger" *ngIf="emailID.errors?.['email']&&(emailID.touched ||emailID.dirty)">
+            *emailID invalid
+          </div>
+      </div>
+      <div class="col mb-3">
+        <label for="password" class="form-label">password</label>
+              <input type="text" class="form-control" id="password" formControlName="password">
+              <div class="form-text text-danger"
+            *ngIf="password.errors?.['required'] &&(password.touched||password.dirty)">
+            *required
+          </div>
+          <div class="form-text form-danger" *ngIf="password.errors?.['pattern']&&(password.touched ||password.dirty)">
+            *password invalid
+          </div>
+      </div>
+      <div class="col mb-3">
+        <label for="dob" class="form-label">dob</label>
+              <input type="datetime-local" class="form-control" id="dob" formControlName="dob">
+
+      </div>
+      <div class="col mb-3">
+        <label for="role" class="form-label">role</label>
+              <input type="text" class="form-control" id="role" formControlName="role">
+              <div class="form-text text-danger"
+            *ngIf="role.errors?.['required'] &&(role.touched||role.dirty)">
+            *required
+          </div>
+          <div class="form-text form-danger" *ngIf="role.errors?.['pattern']&&(role.touched ||role.dirty)">
+            *role is required
+          </div>
+      </div>
+    </div>
+    <div class ="row">
+      <div class="col-6 offset-3">
+        <div class="d-grid">
+          <button type="submit" class="btn btn-primary"  (click)="userregister()">Save</button>
+        </div>
+      </div>
+    </div>
+    </div>
+ 
+</form>
+</body>
