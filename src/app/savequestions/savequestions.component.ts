@@ -28,7 +28,7 @@ export class SavequestionsComponent implements OnInit {
       },
       function () {
 
-        alert("Please enter valid details/all fields to be fill")
+        alert("User Id not found")
 
       }
 
@@ -38,6 +38,10 @@ export class SavequestionsComponent implements OnInit {
   constructor(private HumanaserviceService: HumanaserviceService, private router: Router) { }
 
   ngOnInit(): void {
+   let data= localStorage.getItem('value');
+   if(!data){
+    this.router.navigate(['login']);
+   }
   }
   get question(): FormControl{
     return this.save.get("question") as FormControl;

@@ -5,7 +5,7 @@
   </head>
   
 <body>
-  <form [formGroup]="anssave" (ngSumbit)="saveanswers()" class="border p-3 rounded-3">
+  <form [formGroup]="anssave" (ngSubmit)="saveanswers()" class="border p-3 rounded-3">
   
   <div class="container">
       <div class="row g-0">
@@ -17,30 +17,50 @@
     </div>
   </div>
 
+  <div class="col mb-3">
+    <label for="answer" class="form-label">Answer</label>
+          <input type="text" class="form-control" placeholder="answer" id="answer" formControlName="answer"
+          pattern="[a-z A-Z]{5,30}">
+          <div class="form-text text-danger"
+          *ngIf="answer.errors?.['required'] &&(answer.touched||answer.dirty)">
+          *required
+        </div>
+        <div class="form-text text-danger" *ngIf="answer.errors?.['pattern']&&(answer.touched ||answer.dirty)">
+          *answer invalid
+        </div>
+  
     <div class="col mb-3">
-      <label for="answer" class="form-label">Answer</label>
-            <input type="text" class="form-control" placeholder="answer" id="answer" formControlName="question">
-    
-    
-      <div class="col mb-3">
-        <label for="questionId" class="form-label">Question Id</label>
-              <input type="text" class="form-control" id="questionId" formControlName="questionId">
-      </div>
-      <div class="col mb-3">
-        <label for="userId" class="form-label">User Id</label>
-              <input type="text" class="form-control" id="userId" formControlName="userId">
-      </div>
-      <div class="col mb-3">
-        <label for="dob" class="form-label">Date</label>
-              <input type="datetime-local" class="form-control" id="dob" formControlName="dob">
-      </div>
-      
+      <label for="questionId" class="form-label">QuestionId</label>
+            <input type="text" class="form-control" id="questionId" formControlName="questionId">
+            <div class="form-text text-danger"
+            *ngIf="questionId.errors?.['required'] &&(questionId.touched||questionId.dirty)">
+            *required
+          </div>
+          <div class="form-text form-danger" *ngIf="questionId.errors?.['pattern']&&(questionId.touched ||questionId.dirty)">
+            *questionId required
+          </div>
+    </div>
+    <div class="col mb-3">
+      <label for="userId" class="form-label">User Id</label>
+            <input type="text" class="form-control" id="userId" formControlName="userId">
+            <div class="form-text text-danger"
+            *ngIf="userId.errors?.['required'] &&(userId.touched||userId.dirty)">
+            *required
+          </div>
+          <div class="form-text form-danger" *ngIf="userId.errors?.['pattern']&&(userId.touched ||userId.dirty)">
+            *userId required
+          </div>
+    </div>
+    <div class="col mb-3">
+      <label for="dob" class="form-label">Date</label>
+            <input type="datetime-local" class="form-control" id="dob" formControlName="dob">
+    </div>   
       
     </div>
     <div class ="row">
       <div class="col-6 offset-3">
         <div class="d-grid">
-          <button type="submit" class="btn btn-primary">SaveAnswer</button>
+          <button type="submit" [disabled]="anssave.invalid" class="btn btn-primary">SaveAnswer</button>
         </div>
       </div>
     </div>

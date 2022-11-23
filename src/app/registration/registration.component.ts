@@ -10,8 +10,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class RegistrationComponent implements OnInit {
   registred= new FormGroup({
-    firstName:new FormControl("",[Validators.required,Validators.pattern("[a-zA-Z]")]),
-    lastName:new FormControl("",[Validators.required,Validators.pattern("[a-zA-Z]")]),
+    firstName:new FormControl("",[Validators.required]),
+    lastName:new FormControl("",[Validators.required]),
     emailID:new FormControl("",[Validators.required,Validators.email]),
     password:new FormControl("",[Validators.required]),
     dob:new FormControl("",[Validators.required]),
@@ -21,15 +21,30 @@ export class RegistrationComponent implements OnInit {
  
   userregister()
   {
-    console.log("Hello");
-    console.log(this.registred.getRawValue().firstName);
-    const observable=this.HumanaserviceService.userregister(this.registred.getRawValue());
+    
+    console.log('user saved');
+    const observable= this.HumanaserviceService.userregister(this.registred.getRawValue());
+    observable.subscribe(
+      (Response: any) => {
+        alert(Response.message);
+        
+        this.Router.navigate(['login']);
+       
+      },
+       (error:any) =>{
+
+        alert(error.error.errormessage);
+
+      }
+
+    )
    
      
   }
   constructor(private HumanaserviceService: HumanaserviceService, private Router: Router) { }
 
   ngOnInit(): void {
+    
   }
   get firstName(): FormControl{
     return this.registred.get("firstName") as FormControl;

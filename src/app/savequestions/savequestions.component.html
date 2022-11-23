@@ -24,8 +24,8 @@
             *ngIf="question.errors?.['required'] &&(question.touched||question.dirty)">
             *required
           </div>
-          <div class="form-text form-danger" *ngIf="question.errors?.['pattern']&&(question.touched ||question.dirty)">
-            *question required
+          <div class="form-text text-danger" *ngIf="question.errors?.['pattern']&&(question.touched ||question.dirty)">
+            *question invalid
           </div>
     
       <div class="col mb-3">
@@ -35,7 +35,7 @@
               *ngIf="description.errors?.['required'] &&(description.touched||description.dirty)">
               *required
             </div>
-            <div class="form-text form-danger" *ngIf="description.errors?.['pattern']&&(description.touched ||description.dirty)">
+            <div class="form-text text-danger" *ngIf="description.errors?.['pattern']&&(description.touched ||description.dirty)">
               *description required
             </div>
       </div>
@@ -60,7 +60,7 @@
     <div class ="row">
       <div class="col-6 offset-3">
         <div class="d-grid">
-          <button type="submit" class="btn btn-primary">Savequestion</button>
+          <button type="submit" [disabled]="save.invalid" class="btn btn-primary">Savequestion</button>
         </div>
       </div>
     </div>

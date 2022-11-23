@@ -16,11 +16,11 @@ export class HumanaserviceService {
     return this.http.post(this.BASE_URL+'/login',user);
 
   }
-  userregister(registred:any ):Observable<object>{
+  userregister(registred:any ){
     console.log(registred.firstName+"service")
     return this.http.post(this.BASE_URL+'/userregister', registred);
   }
-  savequestions(question1: any) :Observable<object>{
+  savequestions(question1: any) {
     return this.http.post(this.BASE_URL+'/savequestions', question1);
   }
   getquestionsbyId(questionId: any){

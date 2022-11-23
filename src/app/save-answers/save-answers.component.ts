@@ -12,23 +12,24 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class SaveAnswersComponent implements OnInit {
 
   anssave=new FormGroup({
-    answer:new FormControl(""),
-    questionId:new FormControl(""),
-    userId:new FormControl(""),
-    dob:new FormControl("")
+    answer:new FormControl("",[Validators.required]),
+    questionId:new FormControl("",[Validators.required]),
+    userId:new FormControl("",[Validators.required]),
+    dob:new FormControl("",[Validators.required])
   });
    saveanswers(){
     console.log('Answer saved');
     const observable= this.AnswerserviceService.saveAnswers(this.anssave.getRawValue());
     observable.subscribe(
       (Response: any) => {
-        console.log(Response);
-        alert("Answer saved successfully")
+        alert(Response.message);
+        
+        
        
       },
-      function () {
+       (error:any) =>{
 
-        alert("UserID or questionId not found")
+        alert("userId or questionId not found");
 
       }
 
@@ -38,6 +39,10 @@ export class SaveAnswersComponent implements OnInit {
   constructor(private AnswerserviceService: AnswerserviceService, private router: Router) { }
 
   ngOnInit(): void {
+    let data= localStorage.getItem('value');
+   if(!data){
+    this.router.navigate(['login']);
+   }
   }
   get answer(): FormControl{
     return this.anssave.get("answer") as FormControl;

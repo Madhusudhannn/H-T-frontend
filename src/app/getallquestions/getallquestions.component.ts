@@ -25,7 +25,10 @@ export class GetallquestionsComponent implements OnInit {
     constructor(private HumanaserviceService: HumanaserviceService, private Router: Router) { }
 
   ngOnInit(): void {
-   
+    let data= localStorage.getItem('value');
+    if(!data){
+     this.Router.navigate(['login']);
+    }
     
   }
 

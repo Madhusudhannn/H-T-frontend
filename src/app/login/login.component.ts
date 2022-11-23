@@ -21,6 +21,7 @@ export class LoginComponent implements OnInit {
       (Response: any) => {
         console.log(Response);
         alert("User successfully signed")
+        localStorage.setItem('value',"1");
         this.router.navigate(['savequestions']);
 
       },
@@ -35,6 +36,11 @@ export class LoginComponent implements OnInit {
   constructor(private HumanaserviceService: HumanaserviceService, private router: Router) { }
 
   ngOnInit(): void {
+    let data= localStorage.getItem('value');
+   if(!data){
+    this.router.navigate(['login']);
+   }
+  
   }
 
 get emailID(): FormControl{
